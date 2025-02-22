@@ -5,7 +5,9 @@ import BgGradientAnimated from "./components/bgGradientAnimated";
 const App = () => {
   return (
     <main>
-      <header></header>
+      <header>
+        <BgGradientAnimated />
+      </header>
     </main>
   );
 };
