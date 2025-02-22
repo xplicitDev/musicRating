@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 // Array of colors to be animated
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
-function AuroraGradientAnimated() {
+function bgGradientAnimated() {
   // Initialize motion value with the first color
   const color = useMotionValue(COLORS_TOP[0]);
 
@@ -36,4 +36,4 @@ function AuroraGradientAnimated() {
   );
 }
 
-export default AuroraGradientAnimated;
+export default bgGradientAnimated;
