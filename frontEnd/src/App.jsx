@@ -1,7 +1,15 @@
 import { useState } from "react";
+import Navbar from "./components/navbar";
+import BgGradientAnimated from "./components/bgGradientAnimated";
 
-function App() {
-  return <h1>Hello BG</h1>;
-}
+const App = () => {
+  return (
+    <main>
+      <header>
+        <BgGradientAnimated />
+      </header>
+    </main>
+  );
+};
 
 export default App;
