@@ -7,13 +7,17 @@ const navbar = () => {
         <h1 className="text-left text-2xl font-bold">soundRanked</h1>
         <ul className="hidden md:flex space-x-6 text-lg">
           <li>
-            <a href="#" className="hover:text-cyan-400">
-              Home
+            <a href="#">
+              <img src="./homeIcon.svg" alt="home" className="w-6 h-6" />
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-cyan-400">
-              Charts
+            <a href="#">
+              <img
+                src="./rankingsIcon.svg"
+                alt="rankings"
+                className="w-6 h-6"
+              />
             </a>
           </li>
           <li>
