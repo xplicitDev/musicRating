@@ -7,7 +7,6 @@ const App = () => {
     <main>
       <div className="hero" />
       <Navbar />
-
       <BgGradientAnimated />
     </main>
   );
