@@ -1,1 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: "DM Sans", serif;
+    font-optical-sizing: auto;
+    background: #000000;
+  }
+
+  h1 {
+    @apply w-full mx-auto max-w-2xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
+  }
+}
+
+@layer components {
+  .hero {
+    @apply w-screen h-screen bg-center bg-cover fixed top-0 left-0 z-0;
+  }
+
+  .content {
+    @apply px-5 py-12 max-w-7xl mx-auto flex flex-col relative z-10 bg-transparent;
+  }
+}

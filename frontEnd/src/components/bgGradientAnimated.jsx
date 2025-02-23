@@ -24,7 +24,7 @@ function bgGradientAnimated() {
   }, [color]);
 
   // Use motion template to create a dynamic background gradient
-  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
+  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000000 50%, ${color})`;
 
   return (
     <motion.section
