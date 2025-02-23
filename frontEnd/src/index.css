@@ -20,6 +20,6 @@
   }
 
   .content {
-    @apply px-5 py-12 max-w-7xl mx-auto flex flex-col relative z-10 bg-transparent;
+    @apply px-5 py-12 max-w-7xl mx-auto flex flex-col relative z-10;
   }
 }
