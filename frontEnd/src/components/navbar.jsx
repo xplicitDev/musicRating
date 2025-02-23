@@ -5,10 +5,10 @@ const navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-#000000 bg-opacity-80 text-white z-20">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <h1 className="text-left text-2xl font-bold">soundRanked</h1>
-        <ul className="hidden md:flex space-x-6 text-lg">
+        <ul className="flex gap-x-6 items-center">
           <li>
             <a href="#">
-              <img src="./homeIcon.svg" alt="home" className="w-6 h-6" />
+              <img src="./homeIcon.svg" alt="home" className="w-6.5 h-6.5" />
             </a>
           </li>
           <li>
@@ -21,9 +21,7 @@ const navbar = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-cyan-400">
-              Discover
-            </a>
+            <a href="#"></a>
           </li>
         </ul>
       </div>
