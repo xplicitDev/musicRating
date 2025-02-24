@@ -6,9 +6,7 @@ import BgGradientAnimated from "./components/bgGradientAnimated";
 const App = () => {
   return (
     <main>
-      <div className="hero" />
       <Navbar />
-
       <BgGradientAnimated />
     </main>
   );
