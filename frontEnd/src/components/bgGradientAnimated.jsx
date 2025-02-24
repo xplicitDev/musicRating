@@ -25,8 +25,8 @@ function bgGradientAnimated() {
 
   // Use motion template to create a dynamic background gradient
   const gradient = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000000 50%, ${color})`;
-  const border = useMotionTemplate`1px solid ${color}`;
-  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
+  const border = useMotionTemplate`0.5px solid ${color}`;
+  const boxShadow = useMotionTemplate`0px 0.5px 12px ${color}`;
 
   return (
     <motion.section className="relative min-h-screen px-16 py-24 text-gray-200 flex flex-col items-center justify-center bg-cover bg-center">
@@ -36,7 +36,7 @@ function bgGradientAnimated() {
         className="absolute inset-0 bg-no-repeat"
       />
 
-      {/* Additional content can be added here */}
+      {/* hero-content */}
       <div className="relative z-10 text-center">
         <h1 className="mt-6 text-4xl sm:text-6xl font-extrabold whitespace-pre-line sm:leading-tight tracking-wide">
           soundRanked
@@ -44,16 +44,20 @@ function bgGradientAnimated() {
         <p className="mt-4 text-sm sm:text-lg font-light text-gray-400">
           Rate & Review
         </p>
-
+        {/* search */}
         <div className="search">
-          <div className="flex justify-center items-center gap-2  border border-y-gray-300 rounded-full px-4 py-2 mt-6">
-            <div className="flex items-center">
+          <div className="flex justify-center items-center gap-2  border border-gray-500/30 rounded-full px-4 py-2 mt-6 bg-gray-900/20 backdrop-blur-lg">
+            <div className="flex items-center ">
               <img
                 src="./searchIcon.svg"
                 alt="search"
-                className="ml-0.5 w-5 h-5"
+                className="absolute ml-1.5 left-2 h-5 w-5"
               />
-              <input type="text" placeholder="Search your favorite music" />
+              <input
+                type="text"
+                placeholder="Which song deserves 5 stars?"
+                className="bg-transparent outline-none text-gray-50 placeholder-gray-400 w-64 ml-6"
+              />
             </div>
             <motion.button
               style={{ border, boxShadow }}
