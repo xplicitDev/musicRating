@@ -38,14 +38,14 @@ function bgGradientAnimated() {
 
       {/* hero-content */}
       <div className="relative z-10 text-center">
-        <h1 className="mt-6 text-4xl sm:text-6xl font-extrabold whitespace-pre-line sm:leading-tight tracking-wide">
+        <h1 className="mt-6 text-6xl sm:text-8xl font-extrabold whitespace-pre-line sm:leading-tight tracking-wide">
           soundRanked
         </h1>
-        <p className="mt-4 text-sm sm:text-lg font-light text-gray-400">
+        <p className="mt-2 text-sm sm:text-lg font-light text-gray-400">
           Rate & Review
         </p>
         {/* search */}
-        <div className="flex justify-center items-center mt-8">
+        <div className="flex justify-center items-center">
           <div className="flex justify-center items-center gap-2  border border-gray-500/30 rounded-full px-4 py-2 mt-6 bg-gray-900/20 backdrop-blur-lg">
             <div className="flex items-center ">
               <img
