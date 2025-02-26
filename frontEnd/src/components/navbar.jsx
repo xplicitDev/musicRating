@@ -9,15 +9,15 @@ const navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-24 max-w-[1240px] mt-0 mx-auto px-4 text-white z-10">
-      <h1 className="w-full text-2xl font-bold text-white">soundRanked</h1>
+    <div className="fixed top-0 left-0 w-full bg-black bg-opacity-75 flex justify-between items-center h-24 px-15 text-white z-30">
+      <h1 className="text-2xl font-bold text-white">soundRanked</h1>
       <ul className="hidden md:flex">
         <li className="p-4">Home</li>
         <li className="p-4">Rankings</li>
         <li className="p-4">Favorites</li>
         <li className="p-4">Community</li>
       </ul>
-      <div onClick={handleNav} className="block md:hidden z-10">
+      <div onClick={handleNav} className="block md:hidden z-30">
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
       <ul
@@ -27,9 +27,7 @@ const navbar = () => {
             : "ease-in-out duration-500 fixed left-[-100%]"
         }
       >
-        <h1 className="w-full text-3xl font-bold text-white m-4">
-          soundRanked
-        </h1>
+        <h1 className="text-3xl font-bold text-white m-4">soundRanked</h1>
         <li className="p-4 border-b border-gray-600">Home</li>
         <li className="p-4 border-b border-gray-600">Rankings</li>
         <li className="p-4 border-b border-gray-600">Favorites</li>

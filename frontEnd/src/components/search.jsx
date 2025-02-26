@@ -14,9 +14,9 @@ const search = () => {
   useEffect(() => {
     // Animate the color changes in a loop
     animate(color, COLORS_TOP, {
-      ease: "easeInOut", // Easing function for smooth transitions
-      duration: 10, // Duration for the entire color transition cycle
-      repeat: Infinity, // Repeat the animation infinitely
+      ease: "easeInOut",
+      duration: 10,
+      repeat: Infinity,
       repeatType: "mirror", // Reverses the animation direction on each cycle
     });
   }, [color]);
