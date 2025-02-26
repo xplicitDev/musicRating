@@ -9,7 +9,7 @@ const navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white z-10">
+    <div className="flex justify-between items-center h-24 max-w-[1240px] mt-0 mx-auto px-4 text-white z-10">
       <h1 className="w-full text-2xl font-bold text-white">soundRanked</h1>
       <ul className="hidden md:flex">
         <li className="p-4">Home</li>
