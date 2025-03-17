@@ -2,7 +2,7 @@ import React from "react";
 
 const card01 = () => {
   return (
-    <div className="bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10 z-30">
+    <div className="p-5 rounded-2xl z-30">
       <img src="/stillHere.jpeg" alt="stillHere" />
       <div className="mt-4">
         <h3>Still Here</h3>
