@@ -36,7 +36,7 @@ const search = () => {
           <input
             type="text"
             placeholder="Which song deserves 5 stars?"
-            className="bg-transparent outline-none text-gray-50 placeholder-gray-400 w-64 ml-6"
+            className="bg-transparent outline-none text-gray-50 placeholder-gray-400 w-80 ml-6"
           />
         </div>
         <motion.button
