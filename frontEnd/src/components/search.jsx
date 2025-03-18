@@ -6,7 +6,7 @@ import {
 } from "framer-motion";
 import React, { useEffect } from "react";
 
-const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+const COLORS_TOP = ["#A0FFD9", "#6FBFFF", "#E8B8F0", "#FF6F8C"];
 
 const search = () => {
   const color = useMotionValue(COLORS_TOP[0]);
@@ -21,8 +21,8 @@ const search = () => {
     });
   }, [color]);
 
-  const border = useMotionTemplate`0.5px solid ${color}`;
-  const boxShadow = useMotionTemplate`0px 0.5px 12px ${color}`;
+  const border = useMotionTemplate`0.01px solid ${color}`;
+  const boxShadow = useMotionTemplate`0px 0px 8px ${color}`;
 
   return (
     <div className="flex justify-center items-center">
