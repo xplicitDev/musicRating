@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-none bg-opacity-50 backdrop-blur-md flex justify-between items-center h-24 px-6 text-white z-50 shadow-lg">
+    <div className="fixed top-0 left-0 w-full bg-none bg-opacity-50 backdrop-blur-md flex justify-between items-center h-16 px-6 text-white z-50 shadow-lg">
       <h1 className="text-2xl font-bold text-white">soundRanked</h1>
       <ul className="hidden md:flex">
         <li className="p-4 cursor-pointer hover:text-gray-400">Home</li>
