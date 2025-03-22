@@ -21,21 +21,23 @@ const Navbar = () => {
         {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
       </div>
       <ul
-        className={`fixed top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300] ease-in-out duration-500 z-40 ${
+        className={`fixed top-0 w-[60%] h-full border-r border-gray-900 bg-black  ease-in-out duration-500 z-40 ${
           nav ? "left-0" : "left-[-100%]"
         }`}
       >
         <h1 className="text-3xl font-bold text-white m-4">soundRanked</h1>
-        <li className="p-4 border-b border-gray-600 cursor-pointer hover:text-gray-400">
+        <li className="p-4 border-b border-gray-600 cursor-pointer hover:text-gray-400 bg-black">
           Home
         </li>
-        <li className="p-4 border-b border-gray-600 cursor-pointer hover:text-gray-400">
+        <li className="p-4 border-b border-gray-600 cursor-pointer hover:text-gray-400 bg-black">
           Rankings
         </li>
-        <li className="p-4 border-b border-gray-600 cursor-pointer hover:text-gray-400">
+        <li className="p-4 border-b border-gray-600 cursor-pointer hover:text-gray-400 bg-black">
           Favorites
         </li>
-        <li className="p-4 cursor-pointer hover:text-gray-400">Community</li>
+        <li className="p-4 cursor-pointer hover:text-gray-400 bg-black">
+          Community
+        </li>
       </ul>
     </div>
   );
