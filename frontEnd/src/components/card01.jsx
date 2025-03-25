@@ -132,7 +132,7 @@ const Card01 = () => {
             <div className="flex items-center text-sm text-gray-400 mt-2">
               <div className="flex items-center">
                 <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-                <p>{album.rating}</p>
+                <p>{album.rating.toFixed(1)}</p>
               </div>
               <span className="mx-2">•</span>
               <p>{album.year}</p>
