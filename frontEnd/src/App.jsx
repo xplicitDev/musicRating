@@ -9,6 +9,7 @@ import Navbar from "./components/navbar";
 import Search from "./components/search";
 import Card01 from "./components/card01";
 import Card02 from "./components/card02";
+import Rankings from "./components/rankings";
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
@@ -49,6 +50,7 @@ const App = () => {
         <Search />
         <Card01 />
         <Card02 />
+        {/* <Rankings /> */}
       </motion.section>
     </main>
   );
