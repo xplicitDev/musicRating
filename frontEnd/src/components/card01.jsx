@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
+// Import album covers
 import stillHere from "../assets/albums/stillHere.jpeg";
 import kshama from "../assets/albums/kshama.jpeg";
 import lunchBreak from "../assets/albums/LunchBreak.jpeg";
@@ -11,158 +13,188 @@ import nayaab from "../assets/albums/nayaab.jpeg";
 import hdv1 from "../assets/albums/hdv1.jpeg";
 import tadipaar from "../assets/albums/tadipaar.jpeg";
 
+const albums = [
+  {
+    name: "Still Here",
+    artist: "KR$NA",
+    cover: stillHere,
+    rating: 8.4,
+    year: 2021,
+    tracks: ["Intro", "Roll Up", "Lil Bunty", "I Guess", "Saza-e-Maut"],
+  },
+  {
+    name: "Kshama",
+    artist: "Seedhe Maut",
+    cover: kshama,
+    rating: 9.5,
+    year: 2024,
+    tracks: ["Kshama", "Naya Zamana", "Galtiyaan", "Baatein"],
+  },
+  {
+    name: "Lunch Break",
+    artist: "Seedhe Maut",
+    cover: lunchBreak,
+    rating: 9.0,
+    year: 2023,
+    tracks: ["Lunch Break", "Do Guna", "Batti"],
+  },
+  {
+    name: "Eyes On The Prize",
+    artist: "Karma",
+    cover: eotp,
+    rating: 8.1,
+    year: 2023,
+    tracks: ["Eyes On The Prize", "Cold World", "Day Ones"],
+  },
+  {
+    name: "Time Will Tell",
+    artist: "KR$NA",
+    cover: twt,
+    rating: 9.7,
+    year: 2023,
+    tracks: ["Time Will Tell", "No Cap", "Crisis"],
+  },
+  {
+    name: "Sab Chahiye",
+    artist: "Rawal, Bharg",
+    cover: sabChahiye,
+    rating: 8.2,
+    year: 2021,
+    tracks: ["Intro", "Roll Up", "Lil Bunty", "I Guess", "Saza-e-Maut"],
+  },
+  {
+    name: "Open Letter",
+    artist: "Talha Anjum",
+    cover: openLetter,
+    rating: 9.1,
+    year: 2023,
+    tracks: ["Intro", "Roll Up", "Lil Bunty", "I Guess", "Saza-e-Maut"],
+  },
+  {
+    name: "Nayaab",
+    artist: "Seedhe Maut",
+    cover: nayaab,
+    rating: 9.9,
+    year: 2022,
+    tracks: ["Intro", "Roll Up", "Lil Bunty", "I Guess", "Saza-e-Maut"],
+  },
+  {
+    name: "Tadipaar",
+    artist: "MC Stan",
+    cover: tadipaar,
+    rating: 9.8,
+    year: 2020,
+    tracks: ["Intro", "Roll Up", "Lil Bunty", "I Guess", "Saza-e-Maut"],
+  },
+  {
+    name: "HARD DRIVE Vol. 1",
+    artist: "Raftaar",
+    cover: hdv1,
+    rating: 8.9,
+    year: 2022,
+    tracks: ["Intro", "Roll Up", "Lil Bunty", "I Guess", "Saza-e-Maut"],
+  },
+];
+
 const Card01 = () => {
+  const [selectedAlbum, setSelectedAlbum] = useState();
+
   return (
-    <div className="flex flex-wrap justify-center gap-6 p-5 z-30">
-      {/* Card 1 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56  transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={stillHere} alt="Still Here" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Still Here</h3>
-        <h1 className="">KR$NA</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>8.4</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2021</p>
-        </div>
+    <div className="p-5 z-30">
+      {/* Heading */}
+      <h2 className="text-white text-2xl font-semibold text-left mb-4 ml-5">
+        Popular Projects
+      </h2>
+
+      {/* Album Cards */}
+      <div className="flex flex-wrap justify-center gap-6">
+        {albums.map((album, index) => (
+          <motion.div
+            key={index}
+            className="relative bg-[#00E4FF]/10 backdrop-blur-2xl border border-transparent text-white p-4 rounded-xl w-56 
+                      transition-all duration-300 hover:scale-105 hover:shadow-[0px_0px_20px_#00E4FF] cursor-pointer"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.1, rotate: 1 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setSelectedAlbum(album)}
+          >
+            <motion.img
+              src={album.cover}
+              alt={album.name}
+              className="rounded-lg mb-4 w-full transition-transform duration-300"
+              whileHover={{ scale: 1.05 }}
+            />
+            <h3 className="text-xl font-bold group-hover:text-[#00E4FF] transition-all duration-300">
+              {album.name}
+            </h3>
+            <h1 className="text-gray-300">{album.artist}</h1>
+            <div className="flex items-center text-sm text-gray-400 mt-2">
+              <div className="flex items-center">
+                <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
+                <p>{album.rating}</p>
+              </div>
+              <span className="mx-2">•</span>
+              <p>{album.year}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
 
-      {/* Card 2 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={kshama} alt="Kshama" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Kshama</h3>
-        <h1 className="">Seedhe Maut</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>9.5</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2024</p>
-        </div>
-      </div>
+      {/* Album Details Modal */}
+      {selectedAlbum && (
+        <motion.div
+          className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black/70 backdrop-blur-lg z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedAlbum(null)}
+        >
+          <motion.div
+            className="bg-[#1E1E1E] text-white p-6 rounded-xl w-96 shadow-lg relative"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+          >
+            {/* Close Button */}
+            <button
+              className="absolute top-4 right-6 text-gray-400 hover:text-white text-xl"
+              onClick={() => setSelectedAlbum(null)}
+            >
+              ✖
+            </button>
 
-      {/* Card 3 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={eotp} alt="Eyes On The Prize" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Eyes On The Prize</h3>
-        <h1 className="">Karma</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>8.1</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2023</p>
-        </div>
-      </div>
+            {/* Album Details */}
+            <img
+              src={selectedAlbum.cover}
+              alt={selectedAlbum.name}
+              className="w-40 h-40 rounded-lg mx-auto mb-4"
+            />
+            <h2 className="text-2xl font-bold text-center">
+              {selectedAlbum.name}
+            </h2>
+            <p className="text-center text-gray-400">{selectedAlbum.artist}</p>
+            <p className="text-center text-sm text-gray-300 mt-2">
+              🔥 Rated {selectedAlbum.rating}/10
+            </p>
+            <p className="text-center text-sm text-gray-400">
+              {selectedAlbum.year}
+            </p>
 
-      {/* Card 4 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={lunchBreak} alt="Lunch Break" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Lunch Break</h3>
-        <h1 className="">Seedhe Maut</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>9.0</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2023</p>
-        </div>
-      </div>
-
-      {/* Card 5 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={twt} alt="Time Will Tell" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Time Will Tell</h3>
-        <h1 className="">KR$NA</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>9.7</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2023</p>
-        </div>
-      </div>
-
-      {/* Card 6 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={sabChahiye} alt="Sab Chahiye" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Sab Chahiye</h3>
-        <h1 className="">Rawal</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>8.2</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2021</p>
-        </div>
-      </div>
-
-      {/* Card 7 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={openLetter} alt="Open Letter" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Open Letter</h3>
-        <h1 className="">Talha Anjum</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>9.1</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2023</p>
-        </div>
-      </div>
-
-      {/* Card 8 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={nayaab} alt="Nayaab" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Nayaab</h3>
-        <h1 className="">Seedhe Maut</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>9.9</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2022</p>
-        </div>
-      </div>
-
-      {/* Card 9 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={tadipaar} alt="Tadipaar" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">Tadipaar</h3>
-        <h1 className="">MC Stan</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>9.8</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2020</p>
-        </div>
-      </div>
-
-      {/* Card 10 */}
-      <div className="bg-[#00E4FF]/10 backdrop-blur-2xl shadow-2xl text-white p-4 rounded-xl w-56 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-        <img src={hdv1} alt="HARD DRIVE Vol. 1" className="rounded-lg mb-4" />
-        <h3 className="text-xl font-bold">HARD DRIVE Vol. 1</h3>
-        <h1 className="">Raftaar</h1>
-        <div className="content flex items-center text-sm text-gray-400">
-          <div className="rating flex items-center">
-            <img src="/Rating.svg" alt="Rating" className="mr-2 w-4 h-4" />
-            <p>8.9</p>
-          </div>
-          <span className="mx-2">•</span>
-          <p className="year">2022</p>
-        </div>
-      </div>
+            {/* Tracklist */}
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-2">Tracklist:</h3>
+              <ul className="list-disc list-inside text-gray-300">
+                {selectedAlbum.tracks.map((track, idx) => (
+                  <li key={idx} className="mb-1">
+                    {track}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };
