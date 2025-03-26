@@ -5,6 +5,7 @@ import {
   animate,
 } from "framer-motion";
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Search from "./components/search";
 import Card01 from "./components/card01";
@@ -30,29 +31,40 @@ const App = () => {
   const gradient = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000000 50%, ${color})`;
 
   return (
-    <main>
-      <motion.section className="relative min-h-screen px-16 py-24 text-gray-200 flex flex-col items-center justify-center bg-cover bg-center z-10">
+    <Router>
+      <main>
         <Navbar />
-        <div className="absolute inset-0 bg-black opacity-50 z-0" />
-        <motion.div
-          style={{ backgroundImage: gradient }}
-          className="absolute inset-0 bg-no-repeat z-0"
-        />
-        {/* hero-content */}
-        <div className="relative z-10 text-center">
-          <h1 className="mt-6 text-6xl sm:text-8xl font-extrabold whitespace-pre-line sm:leading-tight tracking-wide">
-            soundRanked
-          </h1>
-          <p className="mt-2 text-sm sm:text-lg font-light text-gray-400">
-            Rate & Review
-          </p>
-        </div>
-        <Search />
-        <Card01 />
-        <Card02 />
-        {/* <Rankings /> */}
-      </motion.section>
-    </main>
+        <Routes>
+          {/* Home Page */}
+          <Route
+            path="/"
+            element={
+              <motion.section className="relative min-h-screen px-16 py-24 text-gray-200 flex flex-col items-center justify-center bg-cover bg-center z-10">
+                <div className="absolute inset-0 bg-black opacity-50 z-0" />
+                <motion.div
+                  style={{ backgroundImage: gradient }}
+                  className="absolute inset-0 bg-no-repeat z-0"
+                />
+                {/* hero-content */}
+                <div className="relative z-10 text-center">
+                  <h1 className="mt-6 text-6xl sm:text-8xl font-extrabold whitespace-pre-line sm:leading-tight tracking-wide">
+                    soundRanked
+                  </h1>
+                  <p className="mt-2 text-sm sm:text-lg font-light text-gray-400">
+                    Rate & Review
+                  </p>
+                </div>
+                <Search />
+                <Card01 />
+                <Card02 />
+              </motion.section>
+            }
+          />
+          {/* Rankings Page */}
+          <Route path="/rankings" element={<Rankings />} />
+        </Routes>
+      </main>
+    </Router>
   );
 };
 
