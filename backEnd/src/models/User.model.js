@@ -29,15 +29,15 @@ const UserSchema = new mongoose.Schema(
       type: String, //clodinary url
       required: true,
     },
-    coverImage: {
-      type: String, //clodinary url
-    },
-    watchHistory: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Video",
-      },
-    ],
+    // coverImage: {
+    //   type: String, //clodinary url
+    // },
+    // watchHistory: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Video",
+    //   },
+    // ],
     password: {
       type: String,
       required: [true, "password is required"],

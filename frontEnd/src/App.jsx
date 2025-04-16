@@ -11,6 +11,8 @@ import Search from "./components/search";
 import Card01 from "./components/card01";
 import Card02 from "./components/card02";
 import Rankings from "./components/rankings";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
@@ -62,6 +64,8 @@ const App = () => {
           />
           {/* Rankings Page */}
           <Route path="/rankings" element={<Rankings />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </main>
     </Router>

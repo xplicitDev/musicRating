@@ -21,6 +21,9 @@ const Navbar = () => {
         </li>
         <li className="p-4 cursor-pointer hover:text-gray-400">Favorites</li>
         <li className="p-4 cursor-pointer hover:text-gray-400">Community</li>
+        <li className="p-4 cursor-pointer hover:text-gray-400">
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
       <div onClick={handleNav} className="block md:hidden z-50 cursor-pointer">
         {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
@@ -41,6 +44,9 @@ const Navbar = () => {
           Favorites
         </li>
         <li className="p-4 cursor-pointer hover:text-gray-400">Community</li>
+        <li className="p-4 cursor-pointer hover:text-gray-400">
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
     </div>
   );
