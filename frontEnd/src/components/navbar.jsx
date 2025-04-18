@@ -19,7 +19,9 @@ const Navbar = () => {
         <li className="p-4 cursor-pointer hover:text-gray-400">
           <Link to="/rankings">Rankings</Link>
         </li>
-        <li className="p-4 cursor-pointer hover:text-gray-400">Favorites</li>
+        <li className="p-4 cursor-pointer hover:text-gray-400">
+          <Link to="/favourites">Favourites</Link>
+        </li>
         <li className="p-4 cursor-pointer hover:text-gray-400">Community</li>
         <li className="p-4 cursor-pointer hover:text-gray-400">
           <Link to="/login">Login</Link>
@@ -41,7 +43,7 @@ const Navbar = () => {
           <Link to="/rankings">Rankings</Link>
         </li>
         <li className="p-4 border-b border-gray-600 cursor-pointer hover:text-gray-400">
-          Favorites
+          <Link to="/favourites">Favourites</Link>
         </li>
         <li className="p-4 cursor-pointer hover:text-gray-400">Community</li>
         <li className="p-4 cursor-pointer hover:text-gray-400">
