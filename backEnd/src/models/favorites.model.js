@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const WatchlistItemSchema = new Schema(
+const favoritesItemSchema = new Schema(
   {
     title: { type: String, required: true },
     posterUrl: { type: String },
@@ -11,7 +11,7 @@ const WatchlistItemSchema = new Schema(
   { timestamps: true }
 );
 
-const WatchlistSchema = new Schema(
+const FavoritesSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -19,11 +19,11 @@ const WatchlistSchema = new Schema(
       required: true,
       unique: true,
     },
-    items: [WatchlistItemSchema], // Embedded movie objects
+    items: [favoritesItemSchema], // Embedded song objects
   },
   { timestamps: true }
 );
 
-const Watchlist = mongoose.model("Watchlist", WatchlistSchema);
+const Favorites = mongoose.model("Favorites", FavoritesSchema);
 
-export default Watchlist;
+export default Favorites;
