@@ -20,7 +20,7 @@ const Navbar = () => {
           <Link to="/rankings">Rankings</Link>
         </li>
         <li className="p-4 cursor-pointer hover:text-gray-400">
-          <Link to="/favourites">Favourites</Link>
+          <Link to="/favourites">Favorites</Link>
         </li>
         <li className="p-4 cursor-pointer hover:text-gray-400">Community</li>
         <li className="p-4 cursor-pointer hover:text-gray-400">

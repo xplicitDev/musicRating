@@ -97,16 +97,53 @@ const albums = [
 ];
 
 const Card01 = () => {
-  const [selectedAlbum, setSelectedAlbum] = useState();
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
+
+  const handleAddToFavorites = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/favorites/add`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            title: selectedAlbum.name,
+            posterUrl: selectedAlbum.cover,
+            rating: selectedAlbum.rating,
+            year: selectedAlbum.year,
+            type: "album",
+          }),
+        }
+      );
+
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        data = { message: "Invalid or empty response from server" };
+      }
+
+      if (response.ok) {
+        alert("Album added to favorites!");
+        setSelectedAlbum(null);
+      } else {
+        alert(data.message || "Failed to add to favorites");
+      }
+    } catch (error) {
+      console.error("Error adding to favorites:", error);
+      alert("Something went wrong");
+    }
+  };
 
   return (
     <div className="p-5 z-30">
-      {/* Heading */}
       <h2 className="text-white text-2xl font-semibold text-left mb-4 ml-5">
         Popular Projects
       </h2>
 
-      {/* Album Cards */}
       <div className="flex flex-wrap justify-center gap-6">
         {albums.map((album, index) => (
           <motion.div
@@ -141,7 +178,7 @@ const Card01 = () => {
         ))}
       </div>
 
-      {/* Album Details Modal */}
+      {/* Modal */}
       {selectedAlbum && (
         <motion.div
           className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black/70 backdrop-blur-lg z-50"
@@ -155,6 +192,7 @@ const Card01 = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
@@ -191,6 +229,16 @@ const Card01 = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            {/* Add to Favorites Button */}
+            <div className="mt-6 flex justify-center">
+              <button
+                onClick={handleAddToFavorites}
+                className="bg-[#00E4FF]/10 border border-[#00E4FF] text-white px-4 py-2 rounded-lg hover:bg-[#00E4FF]/20 transition-all duration-300"
+              >
+                ➕ Add to Favorites
+              </button>
             </div>
           </motion.div>
         </motion.div>
