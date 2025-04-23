@@ -16,7 +16,8 @@ const addToFavorites = asyncHandler(async (req, res) => {
 
   if (!favorites) {
     // Create a new favourites if it doesn’t exist
-    favorites = new favorites({
+    favorites = new Favorites({
+      // Use 'Favorites' here
       userId,
       items: [{ title, posterUrl, rating, year, type }],
     });
@@ -63,7 +64,7 @@ const removeFromFavorites = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Title is required");
   }
 
-  const favourites = await Favorites.findOne({ userId });
+  const favorites = await Favorites.findOne({ userId });
 
   if (!favorites) {
     throw new ApiError(404, "Favorites not found");
@@ -80,7 +81,7 @@ const removeFromFavorites = asyncHandler(async (req, res) => {
 
   res
     .status(200)
-    .json(new ApiResponse(200, favorites, "Song removed from favourites"));
+    .json(new ApiResponse(200, favorites, "Song removed from favorites"));
 });
 
 export { addToFavorites, getFavorites, removeFromFavorites };

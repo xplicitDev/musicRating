@@ -102,13 +102,13 @@ const Card01 = () => {
   const handleAddToFavorites = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/favorites/add`,
+        "http://localhost:8000/api/v1/favorites/add",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+          credentials: "include", // 🔥 THIS sends your auth cookies
           body: JSON.stringify({
             title: selectedAlbum.name,
             posterUrl: selectedAlbum.cover,
