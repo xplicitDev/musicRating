@@ -100,6 +100,13 @@ const Card01 = () => {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
 
   const handleAddToFavorites = async () => {
+    const favoriteData = {
+      title: selectedAlbum.name,
+      rating: selectedAlbum.rating,
+      year: selectedAlbum.year,
+      type: "album",
+    };
+
     try {
       const response = await fetch(
         "http://localhost:8000/api/v1/favorites/add",
@@ -108,14 +115,8 @@ const Card01 = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include", // 🔥 THIS sends your auth cookies
-          body: JSON.stringify({
-            title: selectedAlbum.name,
-            posterUrl: selectedAlbum.cover,
-            rating: selectedAlbum.rating,
-            year: selectedAlbum.year,
-            type: "album",
-          }),
+          credentials: "include",
+          body: JSON.stringify(favoriteData),
         }
       );
 
@@ -126,15 +127,45 @@ const Card01 = () => {
         data = { message: "Invalid or empty response from server" };
       }
 
+      console.log("Add to favorites:", {
+        sent: favoriteData,
+        status: response.status,
+        response: data,
+      });
+
       if (response.ok) {
         alert("Album added to favorites!");
+        const storedFavorites = JSON.parse(
+          localStorage.getItem("favorites") || "[]"
+        );
+        localStorage.setItem(
+          "favorites",
+          JSON.stringify([
+            ...storedFavorites.filter(
+              (fav) => fav.title !== favoriteData.title
+            ),
+            favoriteData,
+          ])
+        );
         setSelectedAlbum(null);
       } else {
         alert(data.message || "Failed to add to favorites");
       }
     } catch (error) {
       console.error("Error adding to favorites:", error);
-      alert("Something went wrong");
+      // Fallback to localStorage
+      const storedFavorites = JSON.parse(
+        localStorage.getItem("favorites") || "[]"
+      );
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify([
+          ...storedFavorites.filter((fav) => fav.title !== favoriteData.title),
+          favoriteData,
+        ])
+      );
+      alert("Album added locally due to network error.");
+      setSelectedAlbum(null);
     }
   };
 
@@ -178,7 +209,6 @@ const Card01 = () => {
         ))}
       </div>
 
-      {/* Modal */}
       {selectedAlbum && (
         <motion.div
           className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black/70 backdrop-blur-lg z-50"
@@ -194,15 +224,12 @@ const Card01 = () => {
             exit={{ scale: 0.8, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               className="absolute top-4 right-6 text-gray-400 hover:text-white text-xl"
               onClick={() => setSelectedAlbum(null)}
             >
               ✖
             </button>
-
-            {/* Album Details */}
             <img
               src={selectedAlbum.cover}
               alt={selectedAlbum.name}
@@ -218,8 +245,6 @@ const Card01 = () => {
             <p className="text-center text-sm text-gray-400">
               {selectedAlbum.year}
             </p>
-
-            {/* Tracklist */}
             <div className="mt-4">
               <h3 className="text-lg font-semibold mb-2">Tracklist:</h3>
               <ul className="list-disc list-inside text-gray-300">
@@ -230,8 +255,6 @@ const Card01 = () => {
                 ))}
               </ul>
             </div>
-
-            {/* Add to Favorites Button */}
             <div className="mt-6 flex justify-center">
               <button
                 onClick={handleAddToFavorites}
