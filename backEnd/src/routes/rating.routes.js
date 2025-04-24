@@ -9,6 +9,6 @@ import { verifyJwt } from "../middlewares/auth.middleware.js"; // make sure to p
 const router = express.Router();
 
 router.post("/", verifyJwt, rateMovie);
-router.get("/:movieTitle", getAverageRating);
+router.get("/:songTitle", getAverageRating);
 
 export default router;

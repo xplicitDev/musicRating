@@ -1,5 +1,5 @@
 // controllers/ratingController.js
-import Rating from "../models/rating.models.js";
+import Rating from "../models/rating.model.js";
 
 // POST /api/ratings - Add or update rating
 export const rateMovie = async (req, res) => {

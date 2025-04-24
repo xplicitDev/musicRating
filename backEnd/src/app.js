@@ -20,10 +20,14 @@ import userRouter from "./routes/User.routes.js";
 import VideoRouter from "./routes/Video.routes.js";
 import ImageRouter from "./routes/image.routes.js";
 import Favorites from "./routes/favorites.routes.js";
+import Ratings from "./routes/rating.routes.js";
+import Review from "./routes/review.routes.js";
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/videos", VideoRouter);
 app.use("/api/v1/images", ImageRouter);
 app.use("/api/v1/favorites", Favorites);
+app.use("/api/v1/ratings", Ratings);
+app.use("/api/v1", Review);
 
 export default app;
