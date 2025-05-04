@@ -52,7 +52,7 @@ const albums = [
     cover: twt,
     rating: 9.7,
     year: 2023,
-    tracks: ["Time Will Tell", "No Cap", "Crisis"],
+    tracks: ["kaha Tak", "NGL", "Been a While"],
   },
   {
     name: "Sab Chahiye",
@@ -511,7 +511,7 @@ const Card01 = () => {
           <motion.div
             key={index}
             className="relative bg-[#00E4FF]/10 backdrop-blur-2xl border border-transparent text-white p-4 rounded-xl w-56 
-                      transition-all duration-300 hover:scale-105 hover:shadow-[0px_0px_20px_#00E4FF] cursor-pointer"
+                      transition-all duration-300 hover:scale-105 hover:shadow-[0px_0px_20px_#00E4FF] cursor-pointer "
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.1, rotate: 1 }}
