@@ -53,21 +53,19 @@ const Signup = () => {
       const response = await axios.post(
         "http://localhost:8000/api/v1/users/register",
         formDataToSend,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
       );
 
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-      }
+      console.log("SIGNUP RESPONSE:", response.status);
+      console.log("SIGNUP DATA:", response.data);
 
       navigate("/");
     } catch (error) {
+      console.error("SIGNUP ERROR:", error);
+      console.error("STATUS:", error.response?.status);
+      console.error("DATA:", error.response?.data);
+
       setErrorMessage(
-        error.response?.data?.message || "Signup failed, please try again."
+        error.response?.data?.message || "Signup failed, please try again.",
       );
     } finally {
       setIsLoading(false);
