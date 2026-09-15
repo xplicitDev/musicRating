@@ -111,7 +111,7 @@ const Card01 = () => {
         try {
           const response = await fetch(
             `http://localhost:8000/api/v1/reviews?movieTitle=${encodeURIComponent(
-              selectedAlbum.name
+              selectedAlbum.name,
             )}`,
             {
               method: "GET",
@@ -119,7 +119,7 @@ const Card01 = () => {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
               },
-            }
+            },
           );
 
           let data;
@@ -155,7 +155,7 @@ const Card01 = () => {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
               },
               credentials: "include",
-            }
+            },
           );
 
           const data = await response.json();
@@ -197,7 +197,7 @@ const Card01 = () => {
           },
           credentials: "include",
           body: JSON.stringify(favoriteData),
-        }
+        },
       );
 
       let data;
@@ -216,16 +216,16 @@ const Card01 = () => {
       if (response.ok) {
         alert("Album added to favorites!");
         const storedFavorites = JSON.parse(
-          localStorage.getItem("favorites") || "[]"
+          localStorage.getItem("favorites") || "[]",
         );
         localStorage.setItem(
           "favorites",
           JSON.stringify([
             ...storedFavorites.filter(
-              (fav) => fav.title !== favoriteData.title
+              (fav) => fav.title !== favoriteData.title,
             ),
             favoriteData,
-          ])
+          ]),
         );
         setSelectedAlbum(null);
       } else {
@@ -275,7 +275,7 @@ const Card01 = () => {
         setUserRating(0);
       } else {
         alert(
-          data.error || `Failed to submit rating (Status: ${response.status})`
+          data.error || `Failed to submit rating (Status: ${response.status})`,
         );
       }
     } catch (error) {
@@ -332,7 +332,7 @@ const Card01 = () => {
       } catch (e) {
         console.error("Response parsing error:", e);
         alert(
-          "Failed to parse server response. Check the console for details."
+          "Failed to parse server response. Check the console for details.",
         );
         return;
       }
@@ -358,7 +358,7 @@ const Card01 = () => {
         try {
           const reviewsResponse = await fetch(
             `http://localhost:8000/api/v1/reviews?movieTitle=${encodeURIComponent(
-              selectedAlbum.name
+              selectedAlbum.name,
             )}`,
             {
               method: "GET",
@@ -366,7 +366,7 @@ const Card01 = () => {
                 Authorization: `Bearer ${token}`,
               },
               credentials: "include",
-            }
+            },
           );
 
           console.log("Reviews response:", {
@@ -391,7 +391,7 @@ const Card01 = () => {
             console.error("Failed to fetch reviews:", reviewsData);
             alert(
               "Failed to load reviews: " +
-                (reviewsData.error || "Unknown error")
+                (reviewsData.error || "Unknown error"),
             );
           }
         } catch (error) {
@@ -407,14 +407,15 @@ const Card01 = () => {
           alert(data.error || "Invalid review data.");
         } else {
           alert(
-            data.error || `Failed to submit review (Status: ${response.status})`
+            data.error ||
+              `Failed to submit review (Status: ${response.status})`,
           );
         }
       }
     } catch (error) {
       console.error("Error in review submission process:", error);
       alert(
-        "Something went wrong while submitting your review. Check the console for details."
+        "Something went wrong while submitting your review. Check the console for details.",
       );
     }
   };
@@ -436,7 +437,7 @@ const Card01 = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           credentials: "include",
-        }
+        },
       );
 
       let data;
@@ -457,7 +458,7 @@ const Card01 = () => {
         // Refresh reviews
         const reviewsResponse = await fetch(
           `http://localhost:8000/api/v1/reviews?movieTitle=${encodeURIComponent(
-            selectedAlbum.name
+            selectedAlbum.name,
           )}`,
           {
             method: "GET",
@@ -465,7 +466,7 @@ const Card01 = () => {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
             credentials: "include",
-          }
+          },
         );
         const reviewsData = await reviewsResponse.json();
         if (reviewsResponse.ok && reviewsData.statusCode === 200) {
@@ -473,7 +474,7 @@ const Card01 = () => {
         }
       } else {
         alert(
-          data.error || `Failed to delete review (Status: ${response.status})`
+          data.error || `Failed to delete review (Status: ${response.status})`,
         );
       }
     } catch (error) {
@@ -503,7 +504,7 @@ const Card01 = () => {
   return (
     <div className="p-5 z-30">
       <h2 className="text-white text-2xl font-semibold text-left mb-4 ml-5">
-        Popular Projects
+        Popular Albums
       </h2>
 
       <div className="flex flex-wrap justify-center gap-6">
