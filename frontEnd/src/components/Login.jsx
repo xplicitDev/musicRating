@@ -39,7 +39,7 @@ const Login = () => {
             "Content-Type": "application/json",
           },
           withCredentials: true,
-        }
+        },
       );
       console.log("Response:", response.data);
 
@@ -48,11 +48,13 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
       }
 
+      alert("USER LOGGED IN");
+
       navigate("/");
     } catch (error) {
       console.error("Error:", error);
       setErrorMessage(
-        error.response?.data?.message || "Login failed, please try again."
+        error.response?.data?.message || "Login failed, please try again.",
       );
     } finally {
       setIsLoading(false);

@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import login_image from "../assets/parental.jpg";
 
+import { useNotification } from "../context/NotificationContext";
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     Fullname: "",
@@ -17,8 +19,11 @@ const Signup = () => {
   // const [coverImageName, setCoverImageName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const navigate = useNavigate();
+
+  const { showNotification } = useNotification();
 
   const handleChange = (event) => {
     const { name, value, type, files } = event.target;
@@ -58,14 +63,17 @@ const Signup = () => {
       console.log("SIGNUP RESPONSE:", response.status);
       console.log("SIGNUP DATA:", response.data);
 
-      navigate("/");
+      // alert("USER REGISTERED");
+
+      showNotification("YOU'RE REGISTERED, MAN!!!");
+      setIsRegistered(true);
     } catch (error) {
       console.error("SIGNUP ERROR:", error);
       console.error("STATUS:", error.response?.status);
       console.error("DATA:", error.response?.data);
 
       setErrorMessage(
-        error.response?.data?.message || "Signup failed, please try again.",
+        error.response?.data?.message || "INVALID ACTION (dont fuck with me)",
       );
     } finally {
       setIsLoading(false);
